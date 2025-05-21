@@ -3,69 +3,85 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>PRO FOR ALL</title>
+  <title>Space Theme</title>
   <style>
     body {
       margin: 0;
-      font-family: 'Arial', sans-serif;
-      background-color: #000;
-      color: #fff;
-      text-align: center;
+      overflow: hidden;
+      background: radial-gradient(ellipse at bottom, #000 0%, #050505 100%);
     }
-    header {
-      padding: 50px 20px;
-    }
-    h1 {
-      font-size: 3em;
-      margin-bottom: 0.5em;
-    }
-    p {
-      font-size: 1.2em;
-      margin-bottom: 1em;
-    }
-    nav a {
-      color: #fff;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    video {
+
+    .stars, .meteors {
+      position: absolute;
       width: 100%;
-      max-width: 800px;
-      margin: 20px auto;
-      display: block;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
     }
-    footer {
-      margin-top: 40px;
-      font-size: 0.9em;
-      color: #888;
+
+    .stars span {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: white;
+      animation: twinkle 2s infinite ease-in-out alternate;
     }
+
+    @keyframes twinkle {
+      0% { opacity: 0.2; }
+      100% { opacity: 1; }
+    }
+
+    .meteor {
+      position: absolute;
+      width: 3px;
+      height: 100px;
+      background: linear-gradient(45deg, white, rgba(255,255,255,0));
+      animation: fall 3s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-100%) translateX(0);
+        opacity: 0;
+      }
+      30% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) translateX(200px);
+        opacity: 0;
+      }
+    }
+
+    /* Generate random stars */
+    .stars span:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
+    .stars span:nth-child(2) { top: 30%; left: 45%; animation-delay: 1s; }
+    .stars span:nth-child(3) { top: 70%; left: 65%; animation-delay: 2s; }
+    .stars span:nth-child(4) { top: 90%; left: 35%; animation-delay: 3s; }
+    .stars span:nth-child(5) { top: 50%; left: 85%; animation-delay: 4s; }
+
+    /* Generate multiple meteors */
+    .meteor:nth-child(1) { top: -100px; left: 20%; animation-delay: 0s; }
+    .meteor:nth-child(2) { top: -100px; left: 50%; animation-delay: 2s; }
+    .meteor:nth-child(3) { top: -100px; left: 75%; animation-delay: 4s; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>PRO FOR ALL</h1>
-    <p>"Only For The Best"</p>
-    <nav>
-      <a href="#">About Us</a>
-      <a href="#">Bracket</a>
-      <a href="#">Discord</a>
-      <a href="#">TikTok</a>
-    </nav>
-  </header>
+  <div class="stars">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
-  <main>
-    <video autoplay muted loop playsinline>
-      <source src="your-video.mp4" type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-  </main>
-
-  <footer>
-    &copy; 2025 PRO FOR ALL
-  </footer>
+  <div class="meteors">
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+    <div class="meteor"></div>
+  </div>
 </body>
 </html>
